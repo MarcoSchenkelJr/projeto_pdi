@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://pdi-studio-api.onrender.com';
+const API_BASE_URL = 'https://pdi-studio-api.onrender.com/api/process';
 
 export const processThreshold = async (file: File, thresholdValue: number): Promise<string> => {
   const formData = new FormData();
