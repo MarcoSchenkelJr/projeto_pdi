@@ -1,0 +1,22 @@
+meu_projeto_pdi/
+│
+├── backend/                  # Nosso Cérebro (Python/FastAPI)
+│   ├── main.py               
+│   ├── routes/               
+│   ├── services/             
+│   └── utils/                
+│
+├── frontend/                 # Nosso Rosto (Vite/React/TS - Gerado automaticamente)
+│   ├── src/                  # Onde o código React e os componentes vão morar
+│   ├── public/               
+│   ├── package.json          # Lista de dependências do Node.js
+│   ├── vite.config.ts        
+│   └── ...                   
+│
+├── docs/                     # Nossa Gestão (onde eu e você trabalhamos)
+│   ├── README.md             
+│   ├── TODO.md               
+│   └── IDEAS.md              
+│
+├── .gitignore                # Regras de segurança do Git
+└── requirements.txt          # Lista de dependências do Python
