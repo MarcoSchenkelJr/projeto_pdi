@@ -36,7 +36,7 @@ Certifique-se de ter o Node.js e o Python 3 instalados na sua máquina.
 **1. Backend (Terminal 1 - Python/FastAPI):**
 
 cd backend
-python -m venv venv
+python -m venv
 source venv/bin/activate  # (No Windows: venv\Scripts\activate)
 pip install -r requirements.txt
 uvicorn main:app --reload
