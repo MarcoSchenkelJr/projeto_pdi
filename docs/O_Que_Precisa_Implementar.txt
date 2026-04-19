@@ -1,0 +1,17 @@
+Desenvolva um software que permita ao operador:
+Escolher uma imagem,
+Salvar as imagens originais e resultantes utilizadas em uma pasta junto com o código fonte do algoritmo utilizado na edição feita,
+
+As edições até o momento são:
+Translação.
+Rotação.
+Aumento do tamanho da imagem.
+Diminuição do tamanho da imagem.
+Espelhamento na horizontal.
+Espelhamento na vertical.
+Threshold.
+Alterar o Brilho.
+Contraste.
+Filtro Média.
+Filtro Mediana.
+Filtro Gauss.

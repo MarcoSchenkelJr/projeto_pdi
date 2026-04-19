@@ -1,0 +1,598 @@
+
+==================================================
+FILE: Grayscale_Brilho_Contraste.pdf
+==================================================
+PRÉ-PROCESSAMENTO
+Segmentação
+Marta Bez
+
+Objetivo
+Útil em várias situações, como para retirada de 
+informações não relevantes.
+Prepara uma imagem para algum
+processamento, mudando seu brilho, 
+tonalidade, passando para tonalidades de cinza, 
+detectando bordas, etc.
+Transformações Grayscale
+Modifica o brilho de cada pixel, dependendo de 
+suas propriedades.
+Leva em conta seu brilho, mas não sua posição na
+imagem.
+Usadas para tornar mais fácil a interpretação devido
+ao realce e contraste.
+Transformações Grayscale
+Útil para etapas posteriores de processamento, pois 
+o trabalho de análise e processamento da imagem
+será feito em relação a um só canal de cor uniforme
+e não a três que seria o caso se trabalhar com 
+imagens RGB.
+Transformações Grayscale
+(Cor R + Cor G + Cor B)/3
+=
+(Cor R * 0,2125 + 
+Cor G * 0,7154 + Cor B * 0,0721)/3
+=
+(Cor R * 0,50 + 
+Cor G * 0,419 + Cor B * 0,081)/3
+=
+Brilho e contraste
+➢ A iluminação não uniforme em uma imagem causa vários problemas na
+identificação objetiva de objetos desta imagem.
+➢ Grandes variações de iluminação podem causar baixo contraste em
+regiões de uma imagem.
+➢ Baixo contraste tende a ocultar ou tornar não inteligíveis detalhes na
+imagem.
+➢ Quando o contraste é muito baixo, a pessoa que vê a imagem pode
+nem sempre perceber alguns objetos ou detalhes de objetos na
+imagem.
+Brilho e contraste
+D(x,y) = Imagem de destino na posição x,y
+C = valor do Contraste a ser aplicado
+f(x,y) = Imagem de origem na posição x,y
+B = valor do Brilho a ser aplicado
+𝐷 𝑥, 𝑦 = 𝐶 ∗ 𝑓 𝑥, 𝑦 + 𝐵
+*** Se valor de C = 1 não aplica Contraste
+*** Se valor de B = 0 não aplica Brilho
+Brilho e contraste
+Se D(x,y) < 0
+D(x,y) = 0
+Se D(x,y) >255
+D(x,y) = 255
+𝐷 𝑥, 𝑦 = 𝐶 ∗ 𝑓 𝑥, 𝑦 + 𝐵
+Brilho
+Contraste
+
+Brilho
+Contraste
+
+
+
+
+==================================================
+FILE: P_D_I_Transformações_Geométricas.pdf
+==================================================
+ 
+ 
+ 
+ 
+ 
+ 
+PROCESSAMENTO DIGITAL DE IMAGENS 
+ 
+TRANSFORMAÇÕES GEOMÉTRICAS 
+ 
+ 
+As transformações geométricas têm como objetivo permitir o 
+mapeamento entre posições espaciais da imagem e a imagem modificada. 
+Nestas transformações se aplicam operações que reorganizarão os pixels da 
+imagem (PEDRINI; SCHWARTZ, 2008). A função destas operações é modificar 
+os tons dos pixels na posição ( xo,yo) da imagem de origem para outra imagem 
+(xd,yd) de destino, alterando, desta forma, a posição dos pixels (CONCI; 
+AZEVEDO; LETA, 2008). 
+Transformações espaciais podem ser realizadas através da multiplicação 
+de matrizes, expressas por: 
+ 
+Os valores X’, Y’, Z’ representam as coordenadas da imagem de destino 
+que receberão o pixel analisado das coordenadas X, Y, Z da imagem de origem. 
+Os valores tx, representam a matriz de transformação que deve ser aplicada para 
+o pixel em análise.  
+Todas as transformações geométricas apresentadas neste bloco podem 
+ser resolvidas utilizando a multiplicação de matrizes apresentada anteriormente. 
+O que modifica p ara cada operação são os valores internos da matriz.  Isso 
+significa que implementando a multiplicação de matrizes uma única função pode 
+resolver todas as operações de transformações, recebendo como parâmetros os 
+valores internos da matriz 3 x 3. 
+Translação 
+O processo de transladar um objeto consiste em deslocar ou somar a cada um 
+dos pixels da imagem um determinado valor ( tx, ty, tz ) (CONCI; AZEVEDO; 
+LETA, 2008). Pedrini e Schwartz (2008) enfatizam que a translação de uma 
+imagem, utilizando o deslocamento tx, ty e tz, pode ser expressa na forma 
+matricial por: 
+
+ 
+ 
+ 
+ 
+ 
+Vamos a um primeiro exemplo para facilitar o entendimento. 
+ 
+ 
+Veja que houve um deslocamento do triângulo para baixo e para a lateral. 
+Quando realizamos este tipo de operação, devemos fazer para todos os pixels 
+que contém a imagem ou o objeto a ser transladado. 
+ 
+No segundo exemplo podemos ver a operação de matrizes sendo 
+realizada para transladar
+
+
+==================================================
+FILE: Processamento_De_Imagens=Metodos_E_Analises.pdf
+==================================================
+Processamento de Imagens: Métodos e Análises  
+Márcio Portes de Albuquerque e Marcelo Portes de Albuquerque  
+mpa@cbpf.br e marcelo@cbpf.br  
+ 
+ 
+Centro Brasileiro de Pesquisas Físicas – CBPF/MCT 
+Coordenação de Atividades Técnicas - CAT 
+Rua Dr. Xavier Sigaud n.150 – 22290-180 – Rio de Janeiro - Brasil 
+ 
+Resumo 
+ 
+Neste artigo procuramos dar uma visão da área de processamento digital de imagens e suas aplicações. Abordamos 
+conceitos importantes sobre a representação espacial de um pixel, a medida de distâncias, a segmentação de uma 
+imagem e o reconhecimento de formas. Utilizamos situações reais para exemplificarmos as técnicas apresentadas. 
+É nosso objetivo abordar de forma introdutória e simplificada o tema. Ao final discutimos sobre os diversos pacotes 
+existentes para processamento digital de imagens e apresentamos uma bibliografia útil para se aprofundar em 
+processamento de imagens e visão por computador. 
+ 
+I. Introdução 
+O Processamento de imagens é certamente uma área em crescimento. Diversos temas 
+científicos são a bordados e em alguns casos de caráter interdisciplinar. Entre eles podemos citar: a 
+compreensão de imagens, a análise em multi -resolução e em multi -frequência, a análise estatística, a 
+codificação e a transmissão de imagens, etc. Mas o que faz do processam ento de imagens uma 
+disciplina tão particular e complexa ? O que faz com que não tenhamos ainda sistemas de alta 
+performance de reconhecimento de caracteres ou de formas mais complexas ? A resposta a estas 
+questões serão discutidas ao longo deste artigo onde a presentaremos problemas e aplicações que 
+demandam técnicas especializadas de processamento de imagens com o intuito de compreender e 
+responder a estas questões.  
+A disciplina “Processamento de Imagens” vem na realidade do Processamento de Sinais. Os 
+sinais, como as imagens, são na realidades um suporte físico que carrega no seu interior uma 
+determinada INFORMAÇÃO. Esta INFORMAÇÃO pode estar associada a uma medida (neste 
+
+
+==================================================
+FILE: Transformações_Geométricas.pdf
+==================================================
+Transformações Geométricas 
+em Imagens
+Marta Bez
+martabez@feevale.br
+
+Podem ser...
+Operações Pontuais
+Operações Locais
+Operações Globais
+Transformações Geométricas
+É possível fazer...
+• pontualmente nos pixels;
+• em partes da imagem fixas ou dependents
+de contexto
+• em toda a imagem.
+Operações Pontuais
+O pixel, na posição (xi,yi), da imagem resultante depende apenas do pixel
+na imagem original.
+Esquema de operações pontuais em imagens. 
+O(f(x,y))
+D(f(x,y))
+Operações Aritméticas
+Exemplo de operação aritmética de soma
+Operações Aritméticas
+128
+160
+64
+32
+192 224
+192
+160
+96128
+96
+64
+128
+160
+64
+32
+Operações Aritméticas
+Imagem original
+ Fig. A união Fig. B Fig. A intersecção Fig. B
+Complemento de Fig. A Fig. A menos Fig. B
+Operações Locais
+Um pixel da imagem resultante depende de uma vizinhança do mesmo
+pixel na imagem original
+Exemplo de uma operação local em uma área em torno do pixel (x, y).
+D(f(x,y))
+Exemplo de operação local
+Remoção de ruído (Ferreira, 2014)
+
+Exemplo com o filtro da média
+Matriz 3 x 3
+ Matriz 5 x 5 Matriz 7 x 7
+Remoção de ruído (Ferreira, 2014)
+Transformações Geométricas
+Levam o tom do pixel na posição (xo ,yo) da imagem origem, para outra
+posição (xd , yd) do espaço em uma imagem destino
+
+Translação
+Numa translação cada ponto de uma figura move-se na 
+mesma direção, no mesmo sentido e percorre a mesma 
+distância.
+
+Translação
+Numa translação cada ponto de uma figura move-se na 
+mesma direção, no mesmo sentido e percorre a mesma 
+distância.
+O desenho iniciava em (1,2) 
+e foi transladado para iniciar 
+em (5,5)
+𝑥𝑑
+𝑦𝑑
+1
+=
+1 0 𝑇𝑥
+0 1 𝑇𝑦
+0 0 1
+.
+𝑥𝑜
+𝑦𝑜
+1
+Translação
+O desenho iniciava em (1,2) e foi 
+transladado para iniciar em (5,5)
+𝑥𝑑
+𝑦𝑑
+1
+=
+1 0 𝑇𝑥
+0 1 𝑇𝑦
+0 0 1
+.
+𝑥𝑜
+𝑦𝑜
+1
+5
+5
+1
+=
+1 0 4
+0 1 3
+0 0 1
+.
+1
+2
+1
+1.1 + 0.2 + 4.1 = 5
+0.1 + 1.2 + 3.1 = 5
+0.1 + 0.2 + 1.1 = 1
+Escala
+É a alteração do tamanho da imagem, deixando-a maior ou menor.
+Exemplo de ampliação e redução da imagem.
+
+Escala
+O desenho inicial tinha o 
+tamanho de 2 x 3 e agora 
+passou a 4 x 6. Duplico
+
+
+==================================================
+FILE: Dilatacao_Erosao.pptx
+==================================================
+Morfologia Matemática: Dilatação e erosão passo a passo
+Marta Rosecler Bez
+martabez@feevale.br
+Imagem Original
+Elemento Estruturante
+Dilatação de imagens em tons de cinza
+Imagem Original
+Imagem Dilatada
+Imagem Original
+Elemento Estruturante
+Erosão
+Imagem Original
+Imagem Erudida
+
+
+
+==================================================
+FILE: Introducao.pptx
+==================================================
+Marta Bez
+martabez@gmail.br
+É a área da Ciência da Computação que estuda a geração, manipulação e análise de imagens através do computador.
+
+Computação Gráfica
+Geração de
+ Imagens
+Análise
+Imagens
+Manipulação de 
+Imagens
+Geração ou Síntese de Imagens
+Fonte: Pedrini et al., 2008.
+Transforma modelos geométricos em imagens digitais
+Manipulação ou processamento de Imagens
+   Técnicas para criar ou modificar imagens digitais
+Análise de Imagens ou Visão Computacional
+
+Transforma imagens digitais em modelos geométricos
+Física
+Química
+Medicina
+Engenharia
+Educação
+Publicidade
+Direito
+Fonte: http://www.gta.ufrj.br/grad/07_2/
+carlos_eduardo/Produtos.html
+Fonte: http://desenhosdahora.com.
+br/rio/rio-filme-wallpaper/
+http://ainesrodrigues.files.wordpress.com/
+2010/11/sem-titulo10.jpg
+Fonte: http://www.hospitalalianca.com.br/servicos/diagnostico-por-imagem/tomografia-computadorizada
+Modelo Sistema de PDI
+
+
+
+
+
+Sensor
+(aquisição)
+Pré-
+processamento
+Segmentação
+Extração de
+características
+Classificação/
+interpretação
+A imagem é convertida em sinal elétrico analógico através de sensores óticos.
+
+Digitalização: quando o sinal é convertido de analógico em uma representação binária.
+
+Discretização pode ser espacial e de amplitude:
+
+Espacial: converte a imagem em uma matriz de pixel
+Amplitude: atribui valor aos pixels
+
+http://sadato.hypermart.net/weblog/images/magnet.jpg
+http://transitar.enterweb.info/
+122-sistema-biometrico-do-detran/
+http://hiperidroticos.com.br/biometria-e-touchscreen/
+Fonte: Humphry et al., 2012
+Fonte: http://www.cerebromente.org.br/n01/pet/pet_port.htm
+Fonte: http://imagensgratis.com.br/imagens-via-satelite/2
+Pré-processamento
+Transformações aplicadas à imagem visando: 
+melhoramento 
+de contraste
+remoção 
+de ruído
+Treinamento/ 
+extração de 
+características 
+de imagem p/ 
+segmentação
+destacar as 
+regiões de 
+interesse
+Exemplo:
+
+Filtragem
+
+Segmentação
+
+Classificação
+Estrela
+Cubo
+Fonte: Conci te al., 2008
+Uma imagem monocromática é uma função de intensidade de luz bidim
+
+
+==================================================
+FILE: Morfologia_Matematica.pptx
+==================================================
+Morfologia Matemática
+Marta Rosecler Bez
+martabez@feevale.br
+Morfologia
+Morfologia é a estrutura de um objeto ou relacionamentos entre as partes que compõem um objeto.
+
+Em linguística, é o estudo da estrutura das palavras. 
+A sinceridade e a lealdade são excelentes virtudes.
+A: artigo definidoSinceridade: substantivo abstratoE: conjunçãoA: artigo definidoLealdade: substantivo abstratoSão: verbo “ser”Excelentes: adjetivoVirtudes: substantivo abstrato
+
+2
+Morfologia
+Em biologia, está relacionada a forma de um organismo. 
+Ex.: a forma da folha pode ser usada para identificar uma planta.
+3
+Fonte: https://pixabay.com/vectors/leaves-foliage-drawing-art-plants-4395694/
+Morfologia Matemática
+Morfologia Matemática é uma teoria utilizada para realizar análise de estruturas espaciais. 
+
+É uma maneira para descrever ou analisar a forma de um objeto digital.
+
+Os matemáticos usam a teoria de conjuntos para empregá-la a séculos. 
+
+4
+Morfologia Matemática
+A ideia de morfologia digital é que uma imagem consiste de um conjunto de pixels que são reunidos em grupos tendo uma estrutura bidimensional (uma forma). 
+
+Algumas operações matemáticas em conjuntos de pixels são usadas para destacar aspectos específicos das formas, permitindo que sejam contadas ou reconhecidas.
+5
+Morfologia Matemática
+Morfologia matemática pode auxiliar nas tarefas de segmentação e análise de imagens digitais.
+
+
+Consiste em “investigar uma imagem utilizando um elemento estruturante, verificando como ele se ajusta à imagem” (Claro, 1995).
+
+	Alguns métodos básicos:
+			» erosão
+			» dilatação
+			» abertura
+			» fechamento
+6
+Conceituação
+Método em que se acentuam detalhes e áreas de uma imagem, atenunando o restante.
+
+Acentua-se a parte escura e atenua-se os pontos claros, ou vice-versa.
+
+Principal objetivo: correção de pequenas falhas e quebras nas imagens.
+
+7
+Vizinhança
+Elemento Estruturante
+Elemento estruturante  é um conjunto completamente definido e conhecido (forma e tamanho), que é comparado, a partir d
+
+
+==================================================
+FILE: Passa_Alta.pptx
+==================================================
+PRE-PROCESSAMENTOSEGMENTAÇÃO
+Marta Bez
+Filtros Passa-Altas
+São usados para eliminar feições de baixa frequência e para realçar feições de alta frequência (bordas, linhas, trocas abruptas). 
+
+Realçam detalhes da imagem.
+
+O tamanho da máscara (filtro) utilizado influencia no resultado final. 
+
+Quanto menor forem as dimensões do filtro, menos detalhes serão realçados. 
+Filtros Direcionais de bordas são filtros que realçam bordas em certas direções, dependendo da implementação do filtro. 
+
+As bordas em imagens são caracterizadas por transições abruptas de níveis de cinza. 
+
+Nestes filtros os pesos são distribuídos de forma assimétrica em torno de um eixo hipotético.
+Filtros Passa-Altas
+Detecção de Bordas
+
+É uma das técnicas básicas utilizadas pela visão humana no reconhecimento de objetos.
+
+É o processo de localização e realce dos pixels de borda, aumentado o contraste entre a borda e o fundo.
+
+Este processo verifica a variação dos valores de luminosidade de uma imagem.
+
+Operador de Gradiente
+
+O método mais comum de diferenciação em aplicações de processamento digital de imagens é o gradiente.
+
+A gradiente é um vetor cuja direção indica os locais nos quais os níveis de cinza sofrem maior variação.
+
+Operador de Gradiente
+
+Aqui existe uma mudança forte de 10 para 200.
+Essa mudança marca uma borda.
+
+Se a mudança é pequena, o gradiente é pequeno.
+Se a mudança é grande, o gradiente é grande.
+
+Por isso:
+			bordas = regiões com gradiente alto
+Para a função f(x,y), o gradiente de f na coordenada x, y é definido como o vetor:
+
+
+
+A magnitude deste vetor é:   
+
+Operador de Gradiente
+Se em um ponto:
+∂𝑓∂𝑥=3
+𝑓∂𝑦=4
+
+então:∇𝑓(𝑥,𝑦)=(3,4) e a magnitude é: 
+
+
+Logo, a força da borda nesse ponto é 5.
+Operador de Gradiente
+Considerando a tabela a seguir, onde os Z's denotam os valores de níveis de cinza, o gradiente pode ser aproximado para o ponto Z5 de várias maneiras. 
+
+Operador de Gradiente
+Detecção de Bordas - ROBERTS
+
+É uma das técnicas básicas utilizadas pela visão humana no reconhe
+
+
+==================================================
+FILE: Passa_Baixa.pptx
+==================================================
+PRE-PROCESSAMENTOSEGMENTAÇÃO
+Marta Bez
+Pré-processamento
+
+
+Útil em várias situações, como para retirada de informações não relevantes.
+
+Objetivo  preparar uma imagem para algum processamento, mudando seu brilho (gray-scale, filtragem, detectores de bordas, etc…)
+Transformação Grayscale
+
+Modifica o brilho de cada pixel, dependendo de suas propriedades.
+
+Leva em conta seu brilho, mas não sua posição na imagem.
+
+Usada para tornar mais fácil a interpretação devido ao realce e contraste.
+
+Transformação Grayscale
+Útil para etapas posteriores de processamento, pois o trabalho de análise e processamento da imagem será feito em relação a um só canal de cor uniforme e não a três que seria o caso se trabalhar com imagens RGB. 
+
+
+
+
+
+
+Brilho
+A iluminação não uniforme em uma imagem causa vários problemas na identificação objetiva de objetos desta imagem. 
+
+Grandes variações de iluminação podem causar baixo contraste em regiões de uma imagem. 
+
+Baixo contraste tende a ocultar ou tornar não inteligíveis detalhes na imagem. 
+
+Quando o contraste é muito baixo, a pessoa que vê a imagem pode nem sempre perceber alguns objetos ou detalhes de objetos na imagem.
+O ajuste de brilho é uma transformação linear regida pela fórmula 
+
+
+Onde
+			
+		    o novo valor do pixel
+
+		     o antigo valor do pixel
+
+
+
+O Ajuste de brilho é feito alterando  para um valor maior ou menor que 0. 
+
+Se o valor for mantido em 0, a imagem não é alterada. 
+
+Assim, adiciona-se intensidade ao canal do pixel em questão. 
+.
+Brilho
+
+Brilho
+
+Brilho
+
+Contraste
+O ajuste de contraste é uma transformação regida pela mesma fórmula do brilho.
+
+O contraste se volta para a alteração do ganho, no caso, o parâmetro  a. 
+
+Se o ganho for mantido em 1, a imagem permanece inalterada. 
+
+Com valores entre 0 e 1, a imagem tem seu contraste reduzido e, para valores maiores, o contraste é aumentado.
+
+.
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DoisDWeb.Projetos.DigitalImage.Metodos
+{
+    public partial
+

@@ -1,0 +1,12 @@
+# PDI Frontend UI - Tasks
+
+- [ ] Install `tailwindcss postcss autoprefixer` and `lucide-react`.
+- [ ] Execute `npx tailwindcss init -p`.
+- [ ] Configure `tailwind.config.js` with content paths and color themes.
+- [ ] Configure `src/index.css` with Tailwind directives and global dark mode styles.
+- [ ] Create `src/components/layout/Sidebar.tsx`.
+- [ ] Create `src/components/workspace/CanvasArea.tsx`.
+- [ ] Create `src/components/layout/Inspector.tsx`.
+- [ ] Create `src/components/layout/MainLayout.tsx`.
+- [ ] Update `src/App.tsx`.
+- [ ] Run `npm run dev` and verify layout with browser subagent.

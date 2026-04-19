@@ -1,0 +1,41 @@
+# Layout Inicial & Configuração do Tailwind CSS
+
+Este plano detalha as etapas para configurar o Tailwind CSS no projeto Vite + React existente e construir o layout inicial estilo Single Page Application (SPA) em Dark Mode, conforme solicitado.
+
+## Alterações Propostas
+
+Executaremos este plano em duas etapas: Configuração de Ferramentas e Desenvolvimento de Componentes de UI.
+
+### Configuração de Ferramentas
+
+- **Instalar Dependências**: `tailwindcss`, `postcss`, `autoprefixer` via npm.
+- **Inicializar o Tailwind**: Criar arquivos `tailwind.config.js` e `postcss.config.js`.
+- **Configurar o Tailwind**:
+  - Atualizar os caminhos no arquivo `tailwind.config.js` para incluir todos os componentes React do projeto.
+  - Configurar as preferências de Dark Mode e tokens de cores personalizadas (ex: fundos escuros profundos que lembram a interface do Photoshop).
+- **Estilos Globais**: Incluir as diretivas do Tailwind no arquivo `src/index.css` e configurar as cores globais de fundo e texto para forçar o tema escuro.
+- **Biblioteca de Ícones**: Instalar a biblioteca `lucide-react` para utilizar SVGs modernos e limpos para os ícones solicitados (Upload, Grayscale, etc.).
+
+### Desenvolvimento de Componentes da UI (Interface)
+
+Vamos dividir o layout em uma estrutura limpa e componentizada dentro da pasta `src/`.
+
+#### Estrutura de Componentes
+
+- **`src/components/layout/MainLayout.tsx`**: O orquestrador principal que conectará as três seções da aplicação.
+- **`src/components/layout/Sidebar.tsx`**: Painel Esquerdo (Barra de Ferramentas). Conterá os botões em ícone na vertical para as ferramentas: `Upload`, `Grayscale`, `Passa Baixa (Blur)`, `Passa Alta (Sharpen)`, `Threshold`.
+- **`src/components/workspace/CanvasArea.tsx`**: Área Central. Terá dois espaços principais lado a lado: um para a Imagem Original e outro para a Imagem Processada.
+- **`src/components/layout/Inspector.tsx`**: Painel Direito (Inspetor). Conterá sliders (barras de arrastar) e controles para as propriedades da ferramenta selecionada no momento (ex: nível de intensidade, nível de threshold).
+- **`src/App.tsx`**: Será atualizado para englobar toda a aplicação dentro do `MainLayout`.
+
+## Revisão do Usuário Necessária
+
+> [!WARNING]
+> Por favor, confirme se a adição da biblioteca de ícones `lucide-react` é aceitável! É altamente recomendado focar em ícones limpos e profissionais em formato SVG para a barra de ferramentas.
+> 
+> Além disso, confirme se você gostaria de utilizar alguma cor de destaque específica da marca ou se prefere que a UI fique em um esquema totalmente neutro (tons de cinza escuro), lembrando estritamente softwares profissionais como o Photoshop.
+
+## Plano de Verificação
+
+### Verificação Automatizada / Manual
+- Irei rodar o comando `npm run dev` e utilizar o navegador interno (browser subagent) para renderizar o layout. Vou verificar se tudo se encaixa perfeitamente na tela sem barras de rolagem indesejadas (focando puramente numa experiência SPA) e confirmar se todos os requisitos visuais do Dark Mode foram atendidos perfeitamente.
