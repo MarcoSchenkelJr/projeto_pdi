@@ -4,7 +4,7 @@ Um sistema interativo completo para **Processamento Digital de Imagens (PDI)**, 
 
 ## 🚀 O Projeto
 
-Este software foi desenvolvido como projeto de conclusão/avaliação da disciplina de Processamento Digital de Imagens. O grande diferencial do PDI Studio é o seu **Exportador Acadêmico**: além de processar as imagens em tempo real na tela, o sistema permite baixar um `.zip` contendo a imagem original, o resultado e um arquivo `algoritmo_utilizado.py`, que explica a fundamentação teórica e demonstra a implementação matemática do algoritmo em **Python Puro** (usando laços de repetição e matrizes, sem caixas-pretas).
+Este software foi desenvolvido como projeto da disciplina de Processamento Digital de Imagens ministrada pela professora Marta Bez na Universidade Feevale (https://www.feevale.br/). O grande diferencial do PDI Studio é o seu **Exportador Acadêmico**: além de processar as imagens em tempo real na tela, o sistema permite baixar um `.zip` contendo a imagem original, a imagem resultante e um arquivo `algoritmo_utilizado.py`, que explica a fundamentação teórica e demonstra a implementação matemática do algoritmo em **Python Puro** (usando o que foi aprendido nas aulas, laços de repetição, fórmulas matemáticas e matrizes).
 
 ## 🛠️ Funcionalidades Implementadas
 
@@ -47,11 +47,5 @@ uvicorn main:app --reload
 cd frontend
 npm install
 npm run dev
-
-Depois de salvar, rode a trinca no terminal para mandar pro GitHub:
-
-git add README.md
-git commit -m "docs: atualiza README com o link de producao da Vercel"
-git push origin main
 
 O projeto estará rodando em algum link como http://localhost:5173
