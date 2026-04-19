@@ -49,7 +49,7 @@ npm install
 npm run dev
 ```
 
-O projeto estará rodando em algum link como http://localhost:5173
+O projeto estará rodando em algum link como "http://localhost:5173".
 
 
 ## 🏗️ Arquitetura do Sistema
