@@ -27,7 +27,7 @@ const tools = [
 export const Sidebar = ({ activeTool, onToolSelect }: SidebarProps) => {
 
   return (
-    <aside className="w-16 bg-panel border-r border-accent flex flex-col items-center py-4 space-y-4">
+    <aside className="w-16 bg-panel border-r border-accent flex flex-col items-center py-4 space-y-4 overflow-y-auto py-4 scrollbar-hide">
 
       {/* Tool Buttons */}
       <div className="w-8 h-px bg-accent mb-4"></div>
@@ -35,17 +35,16 @@ export const Sidebar = ({ activeTool, onToolSelect }: SidebarProps) => {
       {tools.map((tool) => {
         const Icon = tool.icon;
         const isActive = activeTool === tool.id;
-        
+
         return (
           <button
             key={tool.id}
             title={tool.label}
             onClick={() => onToolSelect(tool.id)}
-            className={`p-3 rounded-xl transition-all group relative ${
-              isActive 
-                ? 'bg-highlight text-white' 
+            className={`p-3 rounded-xl transition-all group relative ${isActive
+                ? 'bg-highlight text-white'
                 : 'text-textsecondary hover:bg-accent hover:text-white'
-            }`}
+              }`}
           >
             <Icon size={24} strokeWidth={1.5} />
             <span className="absolute left-16 top-1/2 -translate-y-1/2 bg-black text-xs text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap z-50">
