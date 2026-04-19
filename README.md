@@ -34,19 +34,20 @@ Caso deseje rodar o projeto em sua própria máquina:
 Certifique-se de ter o Node.js e o Python 3 instalados na sua máquina.
 
 **1. Backend (Terminal 1 - Python/FastAPI):**
-
+```bash
 cd backend
-python -m venv
+python -m venv venv
 source venv/bin/activate  # (No Windows: venv\Scripts\activate)
 pip install -r requirements.txt
 uvicorn main:app --reload
-
+```
 
 **2. Frontend (Terminal 2 - React/Vite):**
-
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
 O projeto estará rodando em algum link como http://localhost:5173
 
@@ -55,39 +56,32 @@ O projeto estará rodando em algum link como http://localhost:5173
 
 O **PDI Studio** foi projetado utilizando uma arquitetura moderna de microsserviços (Decoupled Architecture), separando as responsabilidades de interface (Client-Side) e processamento matricial pesado (Server-Side).
 
-[ 🧑‍💻 Usuário / Navegador ]
-         │
-         │ 1. Acessa a aplicação e faz upload da imagem original
-         ▼
-[ 🖥️ Frontend (Vercel) ] ◄─────────────────┐
-- React + Vite + Tailwind CSS              │ 5. Exibe resultado em tempo real
-- Tratamento de UI/UX                      │ e compila o ZIP Acadêmico
-- Validação de arquivos                    │
-         │                                 │
-         │ 2. Envia requisição REST        │ 4. Devolve a matriz processada
-         │    (CORS liberado)              │    (Codificação Base64)
-         ▼                                 │
-[ ☁️ Backend API (Render) ] ───────────────┘
-- Python + FastAPI
-- Roteamento de Endpoints
-         │
-         │ 3. Processamento Matricial (RAM)
-         ▼
-[ 🧠 Motor PDI (Core Algorítmico) ]
-- OpenCV-Headless e NumPy
-- Módulos: Operações Pontuais, Filtros Espaciais e Morfologia
+```mermaid
+graph TD
+    User((🧑‍💻 Usuário))
+    
+    subgraph Client-Side
+        Front[🖥️ Frontend Vercel<br/>React, Vite, Tailwind]
+    end
+    
+    subgraph Server-Side
+        API[☁️ Backend API Render<br/>Python, FastAPI]
+        Core[🧠 Motor Core Algorítmico<br/>OpenCV, NumPy]
+    end
 
-Fluxo de Dados (Data Flow)
+    User -->|1. Upload da imagem| Front
+    Front -->|2. POST REST JSON| API
+    API -->|3. Delega Matrizes RAM| Core
+    Core -.->|Retorno da Matriz| API
+    API -->|4. Resposta Http| Front
+    Front -->|5. Rendering e ZIP| User
+```
 
-    1.O cliente carrega uma imagem na interface responsiva em React.
+### 🔄 Fluxo de Dados (Data Flow)
 
-    2.O Frontend empacota os dados da imagem e faz uma chamada HTTP POST assíncrona para a API na nuvem (hospedada na Render).
-
-    3.O servidor FastAPI recebe a requisição, valida os parâmetros do filtro (ex: tamanho do Kernel, limiar) e envia a matriz de pixels para o motor interno.
-
-    4,Os algoritmos de Visão Computacional processam a matriz estritamente em memória, garantindo alta performance.
-
-    5.O Backend devolve a imagem transformada para o cliente.
-
-    6.O Frontend renderiza o resultado e disponibiliza o recurso de "Salvar Acadêmico", que empacota a imagem processada junto com o código-fonte teórico gerado dinamicamente em Python.
-
+1. **Input:** O usuário carrega uma imagem na interface em React.
+2. **Transferência:** O Frontend empacota os parâmetros e os dados da matriz, disparando um POST assíncrono para a API hospedada na Render.
+3. **Validação:** A API (FastAPI) escuta a rota, confere os argumentos matemáticos (como *tamanho do Kernel* e *Limiar*) e despacha para o motor de processamento central.
+4. **Processamento (Core):** Os algoritmos de Visão processam a matriz estritamente em memória RAM alavancando alta performance.
+5. **Retorno:** O Backend transcreve a matriz resultante e devolve para o cliente.
+6. **Entrega:** O Frontend re-hidrata a imagem no navegador e gera o ZIP Dinâmico para avaliação, injetando as docstrings com a teoria correspondente na versão de código nativa e crua.
