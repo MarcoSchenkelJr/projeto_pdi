@@ -20,24 +20,38 @@ O projeto foi construído separando completamente a camada visual do motor de pr
 * **Frontend (O Rosto):** Construído com React, TypeScript, Vite, TailwindCSS e ícones Lucide. Gerencia o estado da imagem e a interface responsiva.
 * **Backend (O Cérebro):** Construído com Python e FastAPI. Utiliza a biblioteca `opencv-python-headless` para processamento rápido de matrizes no servidor, recebendo e devolvendo arrays de bytes em milissegundos.
 
-## ⚙️ Como executar localmente
+## 🌍 Acesso ao Projeto (Live)
 
+O PDI Studio está hospedado em uma arquitetura de nuvem (Microsserviços):
+* **Frontend (Aplicação Web):** https://projeto-pdi.vercel.app/
+* **Backend (API Python):** Hospedado no Render (Serviço Web Independente)
+
+*Nota: Como o backend utiliza a camada gratuita do Render, o primeiro processamento de imagem pode levar cerca de 50 segundos para "acordar" o servidor. Os processamentos subsequentes serão instantâneos.*
+
+## ⚙️ Como executar localmente (Para Desenvolvimento)
+
+Caso deseje rodar o projeto em sua própria máquina:
 Certifique-se de ter o Node.js e o Python 3 instalados na sua máquina.
 
-**1. Rodando o Backend (Terminal 1):**
-```bash
+**1. Backend (Terminal 1 - Python/FastAPI):**
+
 cd backend
 python -m venv venv
 source venv/bin/activate  # (No Windows: venv\Scripts\activate)
 pip install -r requirements.txt
 uvicorn main:app --reload
-```
 
-**2. Rodando o Frontend (Terminal 2):**
-```bash
+
+**2. Frontend (Terminal 2 - React/Vite):**
+
 cd frontend
 npm install
 npm run dev
-```
 
-O projeto estará rodando em http://localhost:5173.
+Depois de salvar, rode a trinca no terminal para mandar pro GitHub:
+
+git add README.md
+git commit -m "docs: atualiza README com o link de producao da Vercel"
+git push origin main
+
+O projeto estará rodando em algum link como http://localhost:5173
