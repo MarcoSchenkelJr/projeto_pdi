@@ -9,7 +9,7 @@ const tools = [
   { id: 'grayscale', icon: Droplet, label: 'Tons de Cinza' },
   { id: 'lowpass', icon: Aperture, label: 'Passa Baixa' },
   { id: 'highpass', icon: Zap, label: 'Passa Alta' },
-  { id: 'threshold', icon: Contrast, label: 'Limiarização' },
+  { id: 'threshold', icon: Contrast, label: 'Threshold/Limiarização' },
   { id: 'brightness-contrast', icon: SunMedium, label: 'Brilho/Contraste' },
   { id: 'mean-filter', icon: Droplet, label: 'Média (Blur)' },
   { id: 'median-filter', icon: Grid, label: 'Mediana' },
