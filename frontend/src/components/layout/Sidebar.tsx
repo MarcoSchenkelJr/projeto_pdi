@@ -6,11 +6,11 @@ interface SidebarProps {
 }
 
 const tools = [
-  { id: 'grayscale', icon: Droplet, label: 'Grayscale' },
-  { id: 'lowpass', icon: Aperture, label: 'Low Pass' },
-  { id: 'highpass', icon: Zap, label: 'High Pass' },
-  { id: 'threshold', icon: Contrast, label: 'Threshold' },
-  { id: 'brightness-contrast', icon: SunMedium, label: 'Brightness/Contrast' },
+  { id: 'grayscale', icon: Droplet, label: 'Tons de Cinza' },
+  { id: 'lowpass', icon: Aperture, label: 'Passa Baixa' },
+  { id: 'highpass', icon: Zap, label: 'Passa Alta' },
+  { id: 'threshold', icon: Contrast, label: 'Limiarização' },
+  { id: 'brightness-contrast', icon: SunMedium, label: 'Brilho/Contraste' },
   { id: 'mean-filter', icon: Droplet, label: 'Média (Blur)' },
   { id: 'median-filter', icon: Grid, label: 'Mediana' },
   { id: 'gaussian-filter', icon: Wind, label: 'Gaussiano' },
@@ -42,8 +42,8 @@ export const Sidebar = ({ activeTool, onToolSelect }: SidebarProps) => {
             title={tool.label}
             onClick={() => onToolSelect(tool.id)}
             className={`p-3 rounded-xl transition-all group relative ${isActive
-                ? 'bg-highlight text-white'
-                : 'text-textsecondary hover:bg-accent hover:text-white'
+              ? 'bg-highlight text-white'
+              : 'text-textsecondary hover:bg-accent hover:text-white'
               }`}
           >
             <Icon size={24} strokeWidth={1.5} />
