@@ -31,9 +31,13 @@ python -m venv venv
 source venv/bin/activate  # (No Windows: venv\Scripts\activate)
 pip install -r requirements.txt
 uvicorn main:app --reload
+```
 
 **2. Rodando o Frontend (Terminal 2):**
-
+```bash
 cd frontend
 npm install
 npm run dev
+```
+
+O projeto estará rodando em http://localhost:5173.
